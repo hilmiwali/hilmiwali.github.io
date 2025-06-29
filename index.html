@@ -11,23 +11,38 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">Hilmi Wali</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="logo">Ahmad Hilmi</div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch">
+                    <label for="theme-switch" class="theme-label">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                        <div class="toggle-slider"></div>
+                    </label>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm Hilmi Wali</h1>
-            <p>Fresh Graduate Software Developer | Building Amazing Digital Experiences</p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
+            <h1>Hi, I'm Ahmad Hilmi</h1>
+            <p>Computer Science Student | Full Stack Developer | Cybersecurity Enthusiast</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="cta-button">Get In Touch</a>
+                <a href="#" class="resume-button" onclick="downloadResume()">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
         </div>
     </section>
 
@@ -40,9 +55,14 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="about-text">
-                    <p>I'm a passionate fresh graduate software developer with a strong foundation in modern web technologies. I love creating innovative solutions and turning ideas into reality through clean, efficient code.</p>
-                    <p>As a recent graduate, I'm eager to apply my skills in a dynamic environment where I can continue learning and contributing to meaningful projects. I'm particularly interested in full-stack development, user experience design, and emerging technologies.</p>
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or learning about the latest trends in software development.</p>
+                    <p>I'm a motivated final-year Computer Science student specializing in Information Security and Assurance with practical experience in website and mobile app development. Currently pursuing my Bachelor's degree at Universiti Sains Islam Malaysia with a CGPA of 3.67.</p>
+                    <p>I am actively seeking a full-time role as a full stack, backend, or frontend developer upon completing my internship in August 2025. I enjoy working collaboratively in fast-paced environments, tackling technical challenges, and continuously expanding my skill set through emerging tools and frameworks.</p>
+                    <p>With a strong foundation in software engineering, cybersecurity knowledge, and a passion for building user-centric solutions, I aim to contribute meaningfully to innovative projects while advancing my growth in the tech industry.</p>
+                    <div class="resume-download-section">
+                        <button class="resume-btn" onclick="downloadResume()">
+                            <i class="fas fa-file-pdf"></i> Download My Resume
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,22 +76,32 @@
                 <div class="skill-card">
                     <i class="fab fa-html5"></i>
                     <h3>Frontend Development</h3>
-                    <p>HTML5, CSS3, JavaScript, React, Vue.js, Responsive Design</p>
+                    <p>HTML, CSS, JavaScript, Flutter, JSP, WordPress</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-server"></i>
                     <h3>Backend Development</h3>
-                    <p>Node.js, Python, PHP, Express.js, RESTful APIs</p>
+                    <p>Java, Python, PHP, MySQL, Firebase, REST APIs</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Database Management</h3>
-                    <p>MySQL, PostgreSQL, MongoDB, Database Design</p>
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Development</h3>
+                    <p>Flutter, Dart, Java (Android Studio), Firebase</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>Kali Linux, Burp Suite, Wireshark, Nmap, OSINT</p>
                 </div>
                 <div class="skill-card">
                     <i class="fab fa-git-alt"></i>
                     <h3>Development Tools</h3>
-                    <p>Git, GitHub, VS Code, Docker, Linux</p>
+                    <p>Git, VS Code, IntelliJ, XAMPP, HeidiSQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database & Cloud</h3>
+                    <p>MySQL, Firebase, phpMyAdmin, Cloud Firestore</p>
                 </div>
             </div>
         </div>
@@ -84,11 +114,17 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-hiking"></i>
                     </div>
                     <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution built with React and Node.js, featuring user authentication, payment processing, and admin dashboard.</p>
+                        <h3>Hikenity - Hiking Trip Management App</h3>
+                        <p>Final Year Project: A mobile app connecting hiking organizers and participants. Features trip creation, booking system, payment gateway (Stripe), GPS tracking, and user rating system.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Google Maps API</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
                         <div class="project-links">
                             <a href="#"><i class="fab fa-github"></i> GitHub</a>
                             <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
@@ -97,27 +133,58 @@
                 </div>
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fas fa-car"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates, built using React, Firebase, and Material-UI.</p>
+                        <h3>UsimPrebet - University Ride-Hailing App</h3>
+                        <p>Lead Developer: A Flutter-based ride-hailing platform for USIM students. Features user authentication, real-time messaging, and ride booking within campus community.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Firebase Auth</span>
+                            <span class="tech-tag">Cloud Firestore</span>
+                        </div>
                         <div class="project-links">
                             <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-search"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Data Visualization Dashboard</h3>
-                        <p>An interactive dashboard for data visualization using D3.js and Python Flask, featuring dynamic charts and real-time data updates.</p>
+                        <h3>Osintify - OSINT Reconnaissance App</h3>
+                        <p>Mobile app for IP & domain investigations using OSINT techniques. Features IP lookups, WHOIS records, location tracking, and comprehensive domain analysis.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">IPInfo API</span>
+                            <span class="tech-tag">WhoisXML</span>
+                        </div>
                         <div class="project-links">
                             <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Clinic Appointment Booking System</h3>
+                        <p>Secure web-based clinic booking system with enhanced authentication, rate limiting, automatic lockout, strong password hashing, and email recovery features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
                         </div>
                     </div>
                 </div>
@@ -134,15 +201,15 @@
                     <h3>Contact Information</h3>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>your.email@example.com</span>
+                        <span>hilmiwali7702@gmail.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>+1 (555) 123-4567</span>
+                        <span>+60-108167702</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Your City, Your Country</span>
+                        <span>Bukit Jalil, Kuala Lumpur</span>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
@@ -179,7 +246,7 @@
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
-            <p>&copy; 2025 Hilmi Wali. All rights reserved.</p>
+            <p>&copy; 2025 Ahmad Hilmi. All rights reserved.</p>
         </div>
     </footer>
 

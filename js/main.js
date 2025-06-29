@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormHandling();
     initNavigationEffects();
     initAnimations();
+    initThemeToggle();
 });
 
 /**
@@ -70,25 +71,98 @@ function initNavigationEffects() {
     const nav = document.querySelector('nav');
     let lastScrollY = window.scrollY;
     
-    window.addEventListener('scroll', function() {
+    function updateNavBackground() {
+        const currentTheme = document.body.getAttribute('data-theme') || 'light';
         const currentScrollY = window.scrollY;
         
-        // Change navigation background opacity based on scroll
-        if (currentScrollY > 100) {
-            nav.style.background = 'rgba(255, 255, 255, 0.98)';
-            nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+        if (currentTheme === 'dark') {
+            if (currentScrollY > 100) {
+                nav.style.background = 'rgba(26, 32, 44, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.4)';
+            } else {
+                nav.style.background = 'rgba(26, 32, 44, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            }
+        } else {
+            if (currentScrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+    }
+    
+    window.addEventListener('scroll', updateNavBackground);
+    
+    // Call once to set initial state
+    updateNavBackground();
+}
+
+/**
+ * Initialize theme toggle functionality
+ */
+function initThemeToggle() {
+    const themeSwitch = document.getElementById('theme-switch');
+    const body = document.body;
+    const nav = document.querySelector('nav');
+    
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    // Function to update navigation style based on theme
+    function updateNavForTheme(theme) {
+        if (theme === 'dark') {
+            nav.style.background = 'rgba(26, 32, 44, 0.95)';
+            nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
         } else {
             nav.style.background = 'rgba(255, 255, 255, 0.95)';
             nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
         }
+    }
+    
+    // Apply saved theme
+    if (savedTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        themeSwitch.checked = true;
+        updateNavForTheme('dark');
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeSwitch.checked = false;
+        updateNavForTheme('light');
+    }
+    
+    // Add event listener for theme switch
+    themeSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            updateNavForTheme('dark');
+            showNotification('Dark mode enabled', 'success');
+        } else {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            updateNavForTheme('light');
+            showNotification('Light mode enabled', 'success');
+        }
         
-        lastScrollY = currentScrollY;
+        // Trigger navigation update
+        if (window.initNavigationEffects) {
+            initNavigationEffects();
+        }
+    });
+    
+    // Optional: Add keyboard shortcut (Ctrl/Cmd + D)
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+            e.preventDefault();
+            themeSwitch.click();
+        }
     });
 }
-
-/**
- * Initialize scroll animations
- */
 function initAnimations() {
     // Intersection Observer for fade-in animations
     const observerOptions = {
@@ -218,5 +292,13 @@ function addTypingEffect() {
 window.PortfolioJS = {
     showNotification,
     isValidEmail,
-    addTypingEffect
+    addTypingEffect,
+    downloadResume,
+    downloadResumeAdvanced,
+    toggleTheme: function() {
+        document.getElementById('theme-switch').click();
+    },
+    getCurrentTheme: function() {
+        return document.body.getAttribute('data-theme') || 'light';
+    }
 };
