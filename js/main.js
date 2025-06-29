@@ -288,6 +288,155 @@ function addTypingEffect() {
     }
 }
 
+/**
+ * Debug function to check if file exists
+ */
+async function checkResumeFile() {
+    try {
+        const response = await fetch('assets/hilmi_resume.pdf', { method: 'HEAD' });
+        if (response.ok) {
+            console.log('✅ Resume file found!');
+            showNotification('Resume file is accessible', 'success');
+            return true;
+        } else {
+            console.log('❌ Resume file not found. Status:', response.status);
+            showNotification(`Resume file not found (Status: ${response.status})`, 'error');
+            return false;
+        }
+    } catch (error) {
+        console.log('❌ Error checking resume file:', error);
+        showNotification('Error checking resume file', 'error');
+        return false;
+    }
+}
+
+/**
+ * Download resume functionality
+ */
+function downloadResume() {
+    try {
+        console.log('🚀 Starting basic download...');
+        
+        // Create a temporary link element
+        const link = document.createElement('a');
+        
+        // Set the download attributes - using your actual file name
+        link.href = 'assets/hilmi_resume.pdf';
+        link.download = 'Hilmi_Resume.pdf';
+        link.target = '_blank';
+        
+        // Append to body, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Show notification
+        showNotification('Resume download started!', 'success');
+        console.log('✅ Download attempted for: assets/hilmi_resume.pdf');
+        
+    } catch (error) {
+        console.error('❌ Download error:', error);
+        showNotification('Download failed. Opening resume in new tab...', 'error');
+        
+        // Fallback: Open resume in new tab
+        window.open('assets/hilmi_resume.pdf', '_blank');
+    }
+}
+
+/**
+ * Alternative download method using fetch (for better error handling)
+ */
+async function downloadResumeAdvanced() {
+    try {
+        console.log('🚀 Starting advanced download...');
+        showNotification('Preparing download...', 'info');
+        
+        const response = await fetch('assets/hilmi_resume.pdf');
+        
+        if (!response.ok) {
+            throw new Error(`Resume file not found. Status: ${response.status}`);
+        }
+        
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Hilmi_Resume.pdf';
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Clean up the blob URL
+        window.URL.revokeObjectURL(url);
+        
+        showNotification('Resume downloaded successfully!', 'success');
+        console.log('✅ Advanced download completed');
+        
+    } catch (error) {
+        console.error('❌ Advanced download error:', error);
+        showNotification('Unable to download resume. Opening in new tab...', 'error');
+        
+        // Fallback: Open resume in new tab
+        window.open('assets/hilmi_resume.pdf', '_blank');
+    }
+}
+
+/**
+ * Enhanced download function with better debugging
+ */
+async function downloadResumeWithDebug() {
+    console.log('🔍 Starting download process with debug...');
+    
+    // First, check if file exists
+    const fileExists = await checkResumeFile();
+    
+    if (fileExists) {
+        // Try the advanced download method
+        await downloadResumeAdvanced();
+    } else {
+        console.log('📁 File not found, trying alternative methods...');
+        
+        // Try different possible paths
+        const possiblePaths = [
+            'assets/hilmi_resume.pdf',
+            './assets/hilmi_resume.pdf',
+            'hilmi_resume.pdf',
+            'assets/Ahmad_Hilmi_Resume.pdf'
+        ];
+        
+        let foundFile = false;
+        
+        for (const path of possiblePaths) {
+            try {
+                console.log(`🔍 Trying path: ${path}`);
+                const response = await fetch(path, { method: 'HEAD' });
+                if (response.ok) {
+                    console.log(`✅ Found file at: ${path}`);
+                    window.open(path, '_blank');
+                    showNotification('Resume opened in new tab', 'success');
+                    foundFile = true;
+                    break;
+                }
+            } catch (error) {
+                console.log(`❌ Not found at: ${path}`);
+            }
+        }
+        
+        if (!foundFile) {
+            showNotification('Resume file not found. Please check the file path.', 'error');
+            console.log('📋 Make sure your file is at: assets/hilmi_resume.pdf');
+            console.log('📂 Current repository structure should be:');
+            console.log('   hilmiwali.github.io/');
+            console.log('   ├── index.html');
+            console.log('   ├── styles/main.css');
+            console.log('   ├── js/main.js');
+            console.log('   └── assets/hilmi_resume.pdf  ← This file is missing!');
+        }
+    }
+}
+
 // Export functions for potential use in other modules
 window.PortfolioJS = {
     showNotification,

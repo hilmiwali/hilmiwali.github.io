@@ -395,6 +395,230 @@ nav a:hover {
     color: var(--text-secondary);
 }
 
+/* Education Section */
+.education-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-primary);
+    transform: translateX(-50%);
+}
+
+.education-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.education-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.education-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.education-year {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-primary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.education-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.education-item:nth-child(odd) .education-content {
+    justify-content: flex-start;
+    padding-left: 2rem;
+}
+
+.education-item:nth-child(even) .education-content {
+    justify-content: flex-end;
+    padding-right: 2rem;
+    flex-direction: row-reverse;
+}
+
+.education-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.education-details h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.education-details h4 {
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.institution {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.education-achievements {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.achievement-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.achievement-badge.cgpa {
+    background: #4CAF50;
+    color: white;
+}
+
+.achievement-badge.status {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.achievement-badge.muet {
+    background: #ff9800;
+    color: white;
+}
+
+/* Experience Section */
+.experience-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.experience-item {
+    display: flex;
+    margin-bottom: 3rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px var(--nav-shadow);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+}
+
+.experience-year {
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--text-light);
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    min-width: 150px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.experience-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+.experience-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: var(--text-light);
+    margin-right: 1rem;
+    float: left;
+}
+
+.experience-details h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.company {
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.experience-details ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.experience-details li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.experience-phases {
+    margin-top: 1.5rem;
+}
+
+.phase {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-primary);
+}
+
+.phase h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.phase h4 i {
+    color: var(--accent-primary);
+}
+
 /* Projects Section */
 .projects-grid {
     display: grid;
@@ -458,6 +682,156 @@ nav a:hover {
 .project-links a:hover {
     text-decoration: underline;
 }
+
+/* Certifications Section */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.cert-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px var(--nav-shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+}
+
+.cert-card.featured {
+    border: 2px solid var(--accent-primary);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(102, 126, 234, 0.05) 100%);
+}
+
+.cert-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.cert-content h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.cert-issuer {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.cert-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+}
+
+.cert-badge.android { background: #3DDC84; }
+.cert-badge.security { background: #f44336; }
+.cert-badge.hacking { background: #9c27b0; }
+.cert-badge.coding { background: #2196F3; }
+.cert-badge.hardware { background: #ff9800; }
+.cert-badge.pentesting { background: #795548; }
+.cert-badge.intervention { background: #4CAF50; }
+
+/* Competitions Section */
+.competitions-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.competition-category {
+    margin-bottom: 4rem;
+}
+
+.competition-category h3 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.competition-category h3 i {
+    color: var(--accent-primary);
+}
+
+.competition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.competition-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px var(--nav-shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.competition-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+}
+
+.competition-year {
+    background: var(--accent-primary);
+    color: var(--text-light);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    min-width: 70px;
+    text-align: center;
+}
+
+.competition-details h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.organizer {
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.comp-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: white;
+}
+
+.comp-badge.ctf-badge { background: #e91e63; }
+.comp-badge.ai-badge { background: #3f51b5; }
+.comp-badge.art-badge { background: #ff5722; }
+.comp-badge.chess-badge { background: #424242; }
 
 /* Contact Section */
 .contact-content {
@@ -653,5 +1027,103 @@ footer {
 
     .moon-icon {
         right: 8px;
+    }
+
+    /* Education Mobile */
+    .education-timeline::before {
+        left: 30px;
+    }
+
+    .education-item {
+        flex-direction: row !important;
+    }
+
+    .education-year {
+        flex: 0 0 60px;
+        writing-mode: horizontal-tb;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .education-content {
+        justify-content: flex-start !important;
+        flex-direction: row !important;
+        padding-left: 1rem !important;
+        padding-right: 0 !important;
+    }
+
+    .education-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .education-details h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Experience Mobile */
+    .experience-item {
+        flex-direction: column;
+    }
+
+    .experience-year {
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+        padding: 1rem;
+        min-width: auto;
+    }
+
+    .experience-content {
+        padding: 1.5rem;
+    }
+
+    .phase {
+        padding: 1rem;
+    }
+
+    /* Certifications Mobile */
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Competitions Mobile */
+    .competition-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .competition-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .competition-year {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .competition-category h3 {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    /* Hero buttons mobile */
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 250px;
     }
 }
