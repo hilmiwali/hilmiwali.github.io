@@ -1,6 +1,3 @@
-// Portfolio Website JavaScript
-// Author: Hilmi Wali
-// Description: Main JavaScript functionality for the portfolio website
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality when DOM is loaded
@@ -40,13 +37,11 @@ function initFormHandling() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
             const message = formData.get('message');
             
-            // Basic validation
             if (!name || !email || !message) {
                 showNotification('Please fill in all fields.', 'error');
                 return;
@@ -57,7 +52,6 @@ function initFormHandling() {
                 return;
             }
             
-            // Simulate form submission
             showNotification('Thank you for your message! I will get back to you soon.', 'success');
             this.reset();
         });
@@ -98,7 +92,6 @@ function initNavigationEffects() {
     
     window.addEventListener('scroll', updateNavBackground);
     
-    // Call once to set initial state
     updateNavBackground();
 }
 
@@ -110,10 +103,8 @@ function initThemeToggle() {
     const body = document.body;
     const nav = document.querySelector('nav');
     
-    // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme') || 'light';
     
-    // Function to update navigation style based on theme
     function updateNavForTheme(theme) {
         if (theme === 'dark') {
             nav.style.background = 'rgba(26, 32, 44, 0.95)';
@@ -124,7 +115,6 @@ function initThemeToggle() {
         }
     }
     
-    // Apply saved theme
     if (savedTheme === 'dark') {
         body.setAttribute('data-theme', 'dark');
         themeSwitch.checked = true;
@@ -135,7 +125,6 @@ function initThemeToggle() {
         updateNavForTheme('light');
     }
     
-    // Add event listener for theme switch
     themeSwitch.addEventListener('change', function() {
         if (this.checked) {
             body.setAttribute('data-theme', 'dark');
@@ -149,13 +138,11 @@ function initThemeToggle() {
             showNotification('Light mode enabled', 'success');
         }
         
-        // Trigger navigation update
         if (window.initNavigationEffects) {
             initNavigationEffects();
         }
     });
     
-    // Optional: Add keyboard shortcut (Ctrl/Cmd + D)
     document.addEventListener('keydown', function(e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
             e.preventDefault();
@@ -164,7 +151,6 @@ function initThemeToggle() {
     });
 }
 function initAnimations() {
-    // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -179,7 +165,6 @@ function initAnimations() {
         });
     }, observerOptions);
     
-    // Observe skill cards and project cards
     document.querySelectorAll('.skill-card, .project-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
@@ -200,18 +185,15 @@ function isValidEmail(email) {
  * Show notification to user
  */
 function showNotification(message, type = 'info') {
-    // Remove existing notification
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
     
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -228,16 +210,13 @@ function showNotification(message, type = 'info') {
         transition: all 0.3s ease;
     `;
     
-    // Add to DOM
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Remove after delay
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100%)';
@@ -266,7 +245,7 @@ function throttle(func, limit) {
 }
 
 /**
- * Add typing effect to hero title (optional enhancement)
+ * Add typing effect to hero title
  */
 function addTypingEffect() {
     const heroTitle = document.querySelector('.hero-content h1');
@@ -317,20 +296,16 @@ function downloadResume() {
     try {
         console.log('🚀 Starting basic download...');
         
-        // Create a temporary link element
         const link = document.createElement('a');
         
-        // Set the download attributes - using your actual file name
         link.href = 'assets/hilmi_resume.pdf';
-        link.download = 'Hilmi_Resume.pdf';
+        link.download = 'hilmi_resume.pdf';
         link.target = '_blank';
         
-        // Append to body, click, and remove
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
-        // Show notification
         showNotification('Resume download started!', 'success');
         console.log('✅ Download attempted for: assets/hilmi_resume.pdf');
         
@@ -338,13 +313,12 @@ function downloadResume() {
         console.error('❌ Download error:', error);
         showNotification('Download failed. Opening resume in new tab...', 'error');
         
-        // Fallback: Open resume in new tab
         window.open('assets/hilmi_resume.pdf', '_blank');
     }
 }
 
 /**
- * Alternative download method using fetch (for better error handling)
+ * Alternative download method using fetch
  */
 async function downloadResumeAdvanced() {
     try {
@@ -362,13 +336,12 @@ async function downloadResumeAdvanced() {
         
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'Hilmi_Resume.pdf';
+        link.download = 'hilmi_resume.pdf';
         
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
-        // Clean up the blob URL
         window.URL.revokeObjectURL(url);
         
         showNotification('Resume downloaded successfully!', 'success');
@@ -378,7 +351,6 @@ async function downloadResumeAdvanced() {
         console.error('❌ Advanced download error:', error);
         showNotification('Unable to download resume. Opening in new tab...', 'error');
         
-        // Fallback: Open resume in new tab
         window.open('assets/hilmi_resume.pdf', '_blank');
     }
 }
@@ -389,16 +361,13 @@ async function downloadResumeAdvanced() {
 async function downloadResumeWithDebug() {
     console.log('🔍 Starting download process with debug...');
     
-    // First, check if file exists
     const fileExists = await checkResumeFile();
     
     if (fileExists) {
-        // Try the advanced download method
         await downloadResumeAdvanced();
     } else {
         console.log('📁 File not found, trying alternative methods...');
         
-        // Try different possible paths
         const possiblePaths = [
             'assets/hilmi_resume.pdf',
             './assets/hilmi_resume.pdf',
@@ -426,13 +395,6 @@ async function downloadResumeWithDebug() {
         
         if (!foundFile) {
             showNotification('Resume file not found. Please check the file path.', 'error');
-            console.log('📋 Make sure your file is at: assets/hilmi_resume.pdf');
-            console.log('📂 Current repository structure should be:');
-            console.log('   hilmiwali.github.io/');
-            console.log('   ├── index.html');
-            console.log('   ├── styles/main.css');
-            console.log('   ├── js/main.js');
-            console.log('   └── assets/hilmi_resume.pdf  ← This file is missing!');
         }
     }
 }
