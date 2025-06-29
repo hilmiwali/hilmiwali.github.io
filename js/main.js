@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigationEffects();
     initAnimations();
     initThemeToggle();
+    initEmailJS();
 });
 
 /**
@@ -28,7 +29,7 @@ function initSmoothScrolling() {
 }
 
 /**
- * Handle contact form submission
+ * Handle contact form submission with EmailJS
  */
 function initFormHandling() {
     const contactForm = document.querySelector('#contact form');
@@ -37,11 +38,13 @@ function initFormHandling() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Get form data
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
             const message = formData.get('message');
             
+            // Basic validation
             if (!name || !email || !message) {
                 showNotification('Please fill in all fields.', 'error');
                 return;
@@ -52,8 +55,32 @@ function initFormHandling() {
                 return;
             }
             
-            showNotification('Thank you for your message! I will get back to you soon.', 'success');
-            this.reset();
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Prepare template parameters
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_email: 'hilmiwali7702@gmail.com'
+            };
+            
+            emailjs.send('service_f883jke', 'template_mbolpyd', templateParams)
+                .then(function(response) {
+                    showNotification('Thank you! Your message has been sent successfully.', 'success');
+                    contactForm.reset();
+                })
+                .catch(function(error) {
+                    showNotification('Sorry, there was an error. Please try again.', 'error');
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 }
@@ -179,6 +206,13 @@ function initAnimations() {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+/**
+ * Initialize EmailJS
+ */
+function initEmailJS() {
+    emailjs.init('P_vI0_sHWNjvD0hQq');
 }
 
 /**
