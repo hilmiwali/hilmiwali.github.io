@@ -22,7 +22,48 @@ Portfolio website built with Angular 20 and standalone components.
 - 🎨 Modern UI with smooth transitions
 - 📱 Mobile-friendly hamburger menu
 
-## 📝 Content Updates
+## � Getting Started
+
+### Prerequisites
+- Node.js (v20 or higher)
+- npm (v11 or higher)
+
+### Installation
+```bash
+npm install
+```
+
+### Development Server
+```bash
+npm start
+```
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any source files.
+
+### Build for Production
+```bash
+npm run build
+```
+Build artifacts will be stored in the `docs/` directory.
+
+### Deploy to GitHub Pages
+```bash
+npm run deploy
+```
+This command will:
+1. Build the Angular application in production mode
+2. Automatically move files from `docs/browser/` to `docs/` root
+3. Prepare files for GitHub Pages deployment
+
+After running the deploy script, commit and push:
+```bash
+git add .
+git commit -m "Deploy updates"
+git push origin main
+```
+
+**Note:** Angular 20's build system automatically creates a `browser` subfolder. The deploy script handles moving files to the correct location for GitHub Pages (which serves from `/docs` root).
+
+## �📝 Content Updates
 
 ### Update Resume
 Replace `public/hilmi_resume.pdf` with your latest resume.
