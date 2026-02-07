@@ -7,23 +7,23 @@
 
 .main-content {
   flex: 1;
-  margin-left: 250px; // Sidebar width
+  margin-left: 250px;
   transition: margin-left 0.3s ease;
   padding: 2rem;
   overflow-x: hidden;
-  overflow-y: auto; // Only allow scroll when content exceeds viewport
+  overflow-y: auto; 
   height: 100%;
-  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  -webkit-overflow-scrolling: touch; 
 
   @media (max-width: 768px) {
     margin-left: 0; 
     padding: 1.5rem 1rem;
-    padding-bottom: 10rem; // Significantly increased bottom padding for mobile
-    height: calc(100vh - 70px); // Explicit height for mobile
+    padding-bottom: 15rem; 
+    height: calc(100vh - 70px);
   }
 
   @media (max-width: 480px) {
     padding: 1rem 0.75rem;
-    padding-bottom: 10rem; // Significantly increased bottom padding for mobile
+    padding-bottom: 15rem;
   }
 }

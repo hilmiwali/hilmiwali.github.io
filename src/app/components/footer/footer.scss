@@ -5,13 +5,13 @@ footer {
   text-align: center;
   padding: 2rem 0;
   border-top: 1px solid var(--border-color);
-  margin-top: 2rem; // Add top margin for spacing
-  margin-bottom: 2rem; // Add bottom margin for extra space
+  margin-top: 2rem; 
+  margin-bottom: 2rem; 
 
   @media (max-width: 768px) {
     padding: 1.5rem 0;
     margin-top: 2rem;
-    margin-bottom: 5rem; // Significantly increased bottom margin on mobile
+    margin-bottom: 10rem;
   }
 }
 
