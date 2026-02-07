@@ -18,12 +18,12 @@
   @media (max-width: 768px) {
     margin-left: 0; 
     padding: 1.5rem 1rem;
-    padding-bottom: 3rem; // Extra bottom padding for mobile
+    padding-bottom: 6rem; // Increased bottom padding for mobile
     height: calc(100vh - 70px); // Explicit height for mobile
   }
 
   @media (max-width: 480px) {
     padding: 1rem 0.75rem;
-    padding-bottom: 3rem; // Extra bottom padding for mobile
+    padding-bottom: 6rem; // Increased bottom padding for mobile
   }
 }
