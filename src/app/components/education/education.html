@@ -1,0 +1,31 @@
+<section id="education" class="section">
+  <div class="container">
+    <h2>Education</h2>
+    <div class="education-timeline">
+      @for (edu of educationList; track edu.id) {
+        <div class="education-item">
+          <div class="education-year">{{ edu.period }}</div>
+          <div class="education-content">
+            <div class="education-icon">
+              <i [class]="edu.icon"></i>
+            </div>
+            <div class="education-details">
+              <h3>{{ edu.degree }}</h3>
+              @if (edu.field) {
+                <h4>{{ edu.field }}</h4>
+              }
+              <p class="institution">{{ edu.institution }}</p>
+              @if (edu.achievements && edu.achievements.length > 0) {
+                <div class="education-achievements">
+                  @for (achievement of edu.achievements; track achievement) {
+                    <span class="achievement-badge">{{ achievement }}</span>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

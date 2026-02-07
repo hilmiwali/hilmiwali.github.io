@@ -1,0 +1,25 @@
+<section id="certifications" class="section">
+  <div class="container">
+    <h2>Certifications & Training</h2>
+    
+    <div class="certifications-content">
+      <h3>Professional Certifications</h3>
+      <ul class="cert-list">
+        @for (cert of professionalCerts; track cert.id) {
+          <li>
+            {{ cert.name }} - <span class="issuer">{{ cert.issuer }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="udemy-courses">
+      <h3><i class="fab fa-udemy"></i> Udemy Courses</h3>
+      <ul class="udemy-list">
+        @for (course of udemyCourses; track course.id) {
+          <li>{{ course.name }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

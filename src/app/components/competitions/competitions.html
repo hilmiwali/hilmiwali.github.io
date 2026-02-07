@@ -1,0 +1,40 @@
+<section id="competitions" class="section">
+  <div class="container">
+    <h2>Competitions & Achievements</h2>
+    <div class="competitions-container">
+      
+      <div class="competition-category">
+        <h3><i class="fas fa-flag"></i> Capture The Flag (CTF) Competitions</h3>
+        <div class="competition-grid">
+          @for (comp of ctfCompetitions; track comp.id) {
+            <div class="competition-card ctf">
+              <div class="competition-year">{{ comp.year }}</div>
+              <div class="competition-details">
+                <h4>{{ comp.title }}</h4>
+                <p class="organizer">{{ comp.organizer }}</p>
+                <span class="comp-badge ctf-badge">{{ comp.badge }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="competition-category">
+        <h3><i class="fas fa-trophy"></i> Other Competitions</h3>
+        <div class="competition-grid">
+          @for (comp of otherCompetitions; track comp.id) {
+            <div class="competition-card" [ngClass]="comp.category">
+              <div class="competition-year">{{ comp.year }}</div>
+              <div class="competition-details">
+                <h4>{{ comp.title }}</h4>
+                <p class="organizer">{{ comp.organizer }}</p>
+                <span class="comp-badge" [ngClass]="comp.category + '-badge'">{{ comp.badge }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

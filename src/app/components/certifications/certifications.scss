@@ -1,0 +1,61 @@
+.certifications-content,
+.udemy-courses {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      color: var(--accent-primary);
+    }
+  }
+}
+
+.cert-list,
+.udemy-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateX(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .issuer {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .certifications-content,
+  .udemy-courses {
+    padding: 1.5rem;
+  }
+
+  .cert-list li,
+  .udemy-list li {
+    font-size: 0.9rem;
+  }
+}

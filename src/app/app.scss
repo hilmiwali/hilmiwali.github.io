@@ -1,0 +1,25 @@
+.app-container {
+  display: flex;
+  height: calc(100vh - 70px); 
+  margin-top: 70px; 
+  overflow: hidden; 
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px; // Sidebar width
+  transition: margin-left 0.3s ease;
+  padding: 2rem;
+  overflow-x: hidden;
+  overflow-y: auto; // Only allow scroll when content exceeds viewport
+  height: 100%; 
+
+  @media (max-width: 768px) {
+    margin-left: 0; 
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}

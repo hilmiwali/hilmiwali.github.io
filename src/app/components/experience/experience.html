@@ -1,0 +1,42 @@
+<section id="experience" class="section">
+  <div class="container">
+    <h2>Work Experience</h2>
+    <div class="experience-timeline">
+      @for (exp of experienceList; track exp.id) {
+        <div class="experience-item">
+          <div class="experience-year">{{ exp.period }}</div>
+          <div class="experience-content">
+            <div class="experience-icon">
+              <i [class]="exp.icon"></i>
+            </div>
+            <div class="experience-details">
+              <h3>{{ exp.title }}</h3>
+              <p class="company">{{ exp.company }}</p>
+              
+              @if (exp.phases && exp.phases.length > 0) {
+                <div class="experience-phases">
+                  @for (phase of exp.phases; track phase.title) {
+                    <div class="phase">
+                      <h4><i [class]="phase.icon"></i> {{ phase.title }}</h4>
+                      <ul>
+                        @for (responsibility of phase.responsibilities; track responsibility) {
+                          <li>{{ responsibility }}</li>
+                        }
+                      </ul>
+                    </div>
+                  }
+                </div>
+              } @else if (exp.responsibilities && exp.responsibilities.length > 0) {
+                <ul>
+                  @for (responsibility of exp.responsibilities; track responsibility) {
+                    <li>{{ responsibility }}</li>
+                  }
+                </ul>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

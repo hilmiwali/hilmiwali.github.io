@@ -1,0 +1,110 @@
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Get In Touch</h2>
+    <div class="contact-content">
+      
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>hilmiwali7702@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Cyberjaya, Selangor</span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/hilmi-wali/" target="_blank" rel="noopener noreferrer">
+            linkedin.com/in/hilmi-wali
+          </a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/hilmiwali" target="_blank" rel="noopener noreferrer">
+            github.com/hilmiwali
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name"
+              [class.error]="name?.invalid && name?.touched"
+            >
+            @if (name?.invalid && name?.touched) {
+              <span class="error-message">
+                @if (name?.errors?.['required']) {
+                  Name is required
+                }
+                @if (name?.errors?.['minlength']) {
+                  Name must be at least 2 characters
+                }
+              </span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email"
+              [class.error]="email?.invalid && email?.touched"
+            >
+            @if (email?.invalid && email?.touched) {
+              <span class="error-message">
+                @if (email?.errors?.['required']) {
+                  Email is required
+                }
+                @if (email?.errors?.['email']) {
+                  Please enter a valid email
+                }
+              </span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message" 
+              formControlName="message" 
+              rows="5"
+              [class.error]="message?.invalid && message?.touched"
+            ></textarea>
+            @if (message?.invalid && message?.touched) {
+              <span class="error-message">
+                @if (message?.errors?.['required']) {
+                  Message is required
+                }
+                @if (message?.errors?.['minlength']) {
+                  Message must be at least 10 characters
+                }
+              </span>
+            }
+          </div>
+
+          @if (submitMessage) {
+            <div class="submit-message" [class.success]="submitSuccess" [class.error]="!submitSuccess">
+              {{ submitMessage }}
+            </div>
+          }
+
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="isSubmitting"
+          >
+            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

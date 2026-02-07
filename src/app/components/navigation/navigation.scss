@@ -1,0 +1,40 @@
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px var(--nav-shadow);
+  transition: all 0.3s ease;
+
+  .container {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    position: relative; 
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-primary);
+  cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.5rem 0;
+
+    .container {
+      justify-content: center;
+    }
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}
