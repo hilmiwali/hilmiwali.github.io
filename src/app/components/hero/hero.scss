@@ -44,7 +44,7 @@
 @media (max-width: 768px) {
   .hero {
     padding: 3rem 2rem;
-    padding-bottom: 7rem; // Increased bottom spacing on mobile
+    padding-bottom: 10rem; // Significantly increased bottom spacing on mobile
   }
 
   .hero-content {
@@ -58,6 +58,6 @@
   }
 
   .hero-buttons {
-    margin-bottom: 5rem; // Increased bottom margin
+    margin-bottom: 4rem; // Increased bottom margin
   }
 }
