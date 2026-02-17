@@ -25,10 +25,10 @@ Portfolio website built with Angular 20 and standalone components.
 ## �📝 Content Updates
 
 ### Update Resume
-Replace `public/hilmi_resume.pdf` with your latest resume.
+Replace `public/hilmi_resume.pdf` with my latest resume.
 
 ### Update Profile Picture
-Replace `public/image.jpg` with your photo.
+Replace `public/image.jpg` with myphoto.
 
 ### Update Contact Information
 Edit `src/app/components/contact/contact.ts` and environment files.
